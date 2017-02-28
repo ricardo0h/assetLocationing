@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
 
 
 
-app.listen(port, (err) => {
+app.listen(process.env.PORT || 5000, (err) => {
   if (err) {
     return console.log('something bad happened', err)
   }
