@@ -1,0 +1,20 @@
+{
+  "name": "assetlocationing",
+  "version": "1.0.0",
+  "description": "This is the serverside of assetlocationing system",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Melkinen/assetLocationing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Melkinen/assetLocationing/issues"
+  },
+  "homepage": "https://github.com/Melkinen/assetLocationing#readme"
+}
