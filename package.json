@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/Melkinen/assetLocationing/issues"
   },
-  "homepage": "https://github.com/Melkinen/assetLocationing#readme"
+  "homepage": "https://github.com/Melkinen/assetLocationing#readme",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.14.1",
+    "path": "^0.12.7"
+  }
 }
