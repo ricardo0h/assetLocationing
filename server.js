@@ -7,7 +7,7 @@ const app = express()
 //const http = require('http').Server(app);
 
 
-const port = 3000
+const port = 5000;
 
 
 // set the view engine to ejs
