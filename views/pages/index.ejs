@@ -2,7 +2,29 @@
 <html lang="en">
 <head>
 
+  <script src='/socket.io/socket.io.js'></script>
+  <script>
+      var socket = io().connect('http://localhost:5000');
 
+      socket.on('time', function(data) {
+          addMessage(data);
+      });
+      socket.on('error', console.error.bind(console));
+      socket.on('message', console.log.bind(console));
+
+      function addMessage(message) {
+          var text = document.createTextNode(message),
+              el = document.createElement('li'),
+              messages = document.getElementById('messages');
+
+          el.appendChild(text);
+          messages.appendChild(el);
+
+
+      }
+
+
+  </script>
 
 
 </head>
@@ -13,7 +35,8 @@
     This is the index page
   </h1>
     asda asdasda sdasdasdasdasd
-
+      <br>
+      <ul id='messages'></ul>
 
 </body>
 </html>
