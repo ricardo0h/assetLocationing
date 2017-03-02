@@ -19,14 +19,23 @@ server.listen(process.env.PORT || 5000, (err) => {
 var client = require('socket.io-client');
 //socket to the cloud server
 
-
+var allMessages = [];
 // Socket.io server listens to our app
+
 io.on('connection', function(socket) {
+  //console.log(socket.id);
+  var clients = io.sockets.clients();
+  //console.log(clients);
     //here write to console
-    socket.on('message', console.log);
+    socket.on('message', function(data){
+    allMessages.push(data)
+      console.log (data);
+      //this propably sends to all sockets so it is not good on the long run
+      io.emit("messageToView", data);
+    });
     socket.on('connectionStarted', console.log);
     //send to client:
-    socket.emit('message', 'dataa');
+    socket.emit('messageToView', "jotain daaa");
 });
 
 
