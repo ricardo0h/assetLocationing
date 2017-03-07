@@ -9,7 +9,7 @@
 
       socket.on('messageToView', function(data) {
           //alert(data);
-          addMessage(data.time);
+          addMessage(data.found_devices);
       });
       socket.on('error', console.error.bind(console));
       socket.on('message', console.log.bind(console));
