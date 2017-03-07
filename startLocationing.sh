@@ -7,16 +7,18 @@ while true; do
 
 	i=1
 	found_devices=0
+	echo > found_devices.txt
 	while [ $i -le $devices ];
 	do
 		found=$(echo $detect_bt |grep $(sed -n "$i"p conf.txt))
 		if [[ ! -z "$found" ]];
 		then
+			echo $(sed -n "$i"p conf.txt) >> found_devices.txt
 			let found_devices=found_devices+1
 		fi
 		i=$[i+1]
 	done
 
 	echo found $found_devices Bluetooth beacons
-	sleep 1
+	sleep 5
 done
