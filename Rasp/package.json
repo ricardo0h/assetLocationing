@@ -1,0 +1,25 @@
+{
+  "name": "raspserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.14.1",
+    "socket.io": "^1.7.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Melkinen/assetLocationingRasp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Melkinen/assetLocationingRasp/issues"
+  },
+  "homepage": "https://github.com/Melkinen/assetLocationingRasp#readme"
+}
