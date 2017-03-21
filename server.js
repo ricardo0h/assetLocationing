@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const app = express()
 const port = 5000;
+var fileWriter = require('./filewriter.js')
 
 //here server is created
 var server = require('http').createServer(app);
@@ -19,7 +20,7 @@ server.listen(process.env.PORT || 5000, (err) => {
 var client = require('socket.io-client');
 //socket to the cloud server
 
-var allMessages = [];
+
 // Socket.io server listens to our app
 
 io.on('connection', function(socket) {
@@ -28,7 +29,8 @@ io.on('connection', function(socket) {
   //console.log(clients);
     //here write to console
     socket.on('message', function(data){
-    allMessages.push(data)
+      //wtire to file
+      fileWriter.writeToFile(data.found_devices);
       console.log (data);
       //this propably sends to all sockets so it is not good on the long run
       io.emit("messageToView", data);
@@ -38,6 +40,18 @@ io.on('connection', function(socket) {
     socket.emit('messageToView', "jotain daaa");
 });
 
+
+function writeToFile (nameOfFile, data){
+  console.log("asdasd");
+
+  fs.writeFile("./GatewayInformation/"+ nameOfFile +".txt", data, function(err) {
+      if(err) {
+          return console.log(err);
+      }
+      console.log("The file was saved!");
+});
+
+};
 
 
 
