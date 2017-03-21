@@ -23,9 +23,14 @@ var socket1 = client.connect('http://localhost:5000/', { reconnect: true });
 function sendMessageToCloud() {
     var file;
     file = fs.readFileSync('found_devices.txt', "utf8");
-    console.log("file: " + file);
-    //socket1.emit('message', { time: new Date().toJSON() });
-    socket1.emit('message', { found_devices: file });
+    var old_file = fs.readFileSync('old_found_devices.txt', "utf8");
+    if(file != old_file){
+        fs.writeFile('./old_found_devices.txt', file);
+        console.log("nearbby BT devices changed");
+        console.log("file: " + file);
+        //socket1.emit('message', { time: new Date().toJSON() });
+        socket1.emit('message', { found_devices: file });
+    }
 }
 
 // Send message to cloud server every 10 secs
