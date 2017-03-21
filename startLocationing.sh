@@ -1,10 +1,7 @@
 #!/bin/bash
-
 source ./number_of_beacons.sh
-
 while true; do
 	detect_bt=$(hcitool scan)
-
 	i=1
 	found_devices=0
 	echo $(cat /sys/class/net/eth0/address) > found_devices.txt
@@ -18,7 +15,7 @@ while true; do
 		fi
 		i=$[i+1]
 	done
-
 	echo found $found_devices Bluetooth beacons
 	sleep 5
 done
+exit
