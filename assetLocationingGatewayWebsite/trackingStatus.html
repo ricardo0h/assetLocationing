@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="jquary.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
+<title>Asset Locationing Gateway - Tracking Status</title>
+</head>
+
+<body>
+		<header>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="index.html">Beacon Tracker</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Configuration
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="config_gateway.html">Add/Remove Gateway</a></li>
+            <li class="divider"></li>
+            <li><a href="config_beacon.html">Add/Remove Beacons</a></li>
+          </ul>
+        </li>
+        <li class="active"><a href="trackingStatus.html">Tracking Status</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+       <li><a href="register.html">Register</a></li>
+        <li><a href="settings.html">Settings</a></li>
+        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+	</header>
+	
+	
+<div class="container-fluid">
+	<h1>Tracking Status</h1><br>
+	<h4>Choose View:</h4>
+	<select id="selectMe" class="selectpicker" title="Choose View" data-style="btn-inverse">
+ 	 	<option value="option1">Beacon Selection</option>
+  		<option value="option2">Location Selection</option>
+  		<option value="option3">Map</option>
+	</select>
+</div>
+
+<div class="container-fluid" id="hero">
+
+<div id="option1" class="group">
+	<div class="row">
+		<div class="col-md-6">
+			<h4>Beacons:</h4>
+			<select id="selectBeacon" class="selectpicker" title="Select Beacon name">
+				<option value="">Beacon 1.1 (Forklift)</option>
+				<option value="">Beacon 1.2 (Lorry)</option>
+				<option value="">Beacon 2.1 (Tank 1)</option>
+				<option value="">Beacon 2.2 (Tank 2)</option>
+				<option value="">Beacon 3.1 (Car 1)</option>
+				<option value="">Beacon 3.2 (Car 2)</option>
+			</select>
+		</div>
+		<div class="col-md-6">
+			<h4>Location:</h4>
+			*shows location of selected Beacon*
+		</div>
+	</div>
+	<br>
+	<div class="col-md-6 pull-right">
+			<h4>More information:</h4>
+			<p>Beacon ID:<br>
+			Time spent in (area name):<br>
+			Last seen:<br>
+			Location History:<br></p>
+		</div>
+</div>
+
+<div id="option2" class="group">
+	<div class="row">
+		<div class="col-md-6">
+			<h4>Locations:</h4>
+			<select id="selectGateway" class="selectpicker" title="Select Gateway name">
+				<option value="">Storage Room (Gateway 1)</option>
+				<option value="">Production Plant (Gateway 2)</option>
+				<option value="">Carpark (Gateway 3)</option>
+			</select>
+		</div>
+		<div class="col-md-6">
+			<h4>Beacons:</h4>
+			*shows beacons in currently selected Location*
+		</div>
+	</div>
+	<br>
+	<div class="col-md-6 pull-right">
+			<h4>More information:</h4>
+			<p>Beacon ID:<br>
+			Time spent in (area name):<br>
+			Last seen:<br>
+			Location History:<br></p>
+		</div>
+</div>
+
+<div id="option3" class="group">
+<div class="container-fluid" id="map">
+	*Insert floorplan of company*
+</div>
+</div>
+</div>
+
+
+
+<footer class="container-fluid text-center">
+  <p>&copy; 2017 Asset Locationing Gateway Demola Team</p>
+</footer>
+
+
+</body>
+</html>

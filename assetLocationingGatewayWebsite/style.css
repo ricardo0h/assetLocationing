@@ -1,0 +1,65 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.login {
+	margin-top: 25px !important;
+	padding: 5px;
+	width: auto;
+	min-width: 320px;
+	max-width: 400px;
+	height: 400px;
+	background-color: #f3f3f3;
+	margin:0 auto;
+	border-radius: 10px;
+	border: 1px solid #c5c5c5;
+    text-align: center;
+}
+.login-inner {
+	margin:0 auto;
+	max-width: 380px;
+	width: auto;
+}
+
+.email {
+	margin-bottom: 10px;
+}
+.password {
+	margin-bottom: 10px;
+}
+.submit {
+	margin-top: 10px;
+}
+.forgot {
+	min-width:50px;
+	width: 49%;
+	float: right;
+	margin-top: 20px;
+}
+.register {
+	width: 50%;
+	float: left;
+	margin-top: 20px;
+}
+*[role="form"] {
+    max-width: 530px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 0.3em;
+}
+
+*[role="form"] h2 {
+    margin-left: 5em;
+    margin-bottom: 1em;
+}
+#hero{
+	padding-top: 20px;
+}
+#map{
+	align-content: center;
+	text-align: center;
+	padding: 30px 0px;
+}
+footer{
+	padding: 30px 0px;
+}
