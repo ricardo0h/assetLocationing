@@ -7,7 +7,7 @@ while true; do
 
 	i=1
 	found_devices=0
-	echo > found_devices.txt
+	echo $(cat /sys/class/net/eth0/address) > found_devices.txt
 	while [ $i -le $devices ];
 	do
 		found=$(echo $detect_bt |grep $(sed -n "$i"p conf.txt))
