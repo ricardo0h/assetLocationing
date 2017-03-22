@@ -4,6 +4,8 @@ const app = express()
 const port = 5000;
 //filewriter is used to write and read gateway data to documents
 var fileWriter = require('./filewriter.js')
+//here we require the routing file and all its routes
+var routing = require('./routing.js')
 
 //here server is created
 var server = require('http').createServer(app);
@@ -21,17 +23,18 @@ server.listen(process.env.PORT || 5000, (err) => {
 var client = require('socket.io-client');
 //socket to the cloud server
 
-
 // Socket.io server listens to our app
 
 io.on('connection', function(socket) {
   //console.log(socket.id);
   var clients = io.sockets.clients();
-  //console.log(clients);
-    //here write to console
+
     socket.on('message', function(data){
-      //wtire to file
+      //always when message comes
+
+      //write the data from gateway to gateways own file
       fileWriter.writeToFile(data.found_devices);
+
       console.log (data);
       //this propably sends to all sockets so it is not good on the long run
       io.emit("messageToView", data);
@@ -42,25 +45,7 @@ io.on('connection', function(socket) {
 });
 
 
-function writeToFile (nameOfFile, data){
-  console.log("asdasd");
-
-  fs.writeFile("./GatewayInformation/"+ nameOfFile +".txt", data, function(err) {
-      if(err) {
-          return console.log(err);
-      }
-      console.log("The file was saved!");
-});
-
-};
-
-
-
 // set the view engine to ejs
 app.set('view engine', 'ejs');
-
-// use res.render to load up an ejs view file
-// index page
-app.get('/', function(req, res) {
-    res.render('pages/index');
-});
+//use the routing file to set the urls
+app.use("/", routing);

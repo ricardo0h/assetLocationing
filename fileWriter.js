@@ -17,6 +17,17 @@ exports.writeToFile =(data) => {
 
   }
 
+  exports.getAllGateways = () =>{
+      var fs = require("fs");
+      var file = fs.readFile("./GatewayInformation/listOfGateways.txt", "utf8",function(err){
+        if (err){
+          return console.log(err);
+        }
+      });
+      return file;
+  }
+
+
 exports.readWholeFile = (nameOfFile) =>{
     var fs = require("fs");
     var file = fs.readFile("./GatewayInformation/" + nameOfFile + ".txt", "utf8",function(err){
