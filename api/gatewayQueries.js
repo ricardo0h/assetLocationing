@@ -11,7 +11,9 @@ exports.getAllGateways = (req,res,next) =>{
       return console.log(err);
     }
     console.log(data);
-    res.send(data);
+  //!!!!!!!!!!!!HERE ROW IS SOMEHOW AGEIN R NOT N!!!!!!!!!!!
+    listOfGateways = data.split("\n");
+    res.send(listOfGateways);
 
   });
 }
