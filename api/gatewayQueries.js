@@ -14,7 +14,8 @@ exports.getAllGateways = (req,res,next) =>{
     }
     console.log(data);
   //!!!!!!!!!!!!HERE ROW IS SOMEHOW AGEIN R NOT N!!!!!!!!!!!
-    listOfGateways = data.split("\n");
+    listOfGateways = data.split("\r\n");
+    listOfGateways.pop();//remove the "" from last element
     res.send(listOfGateways);
 
   });
@@ -29,7 +30,9 @@ exports.getBeaconsFromGateway = (req,res,next,nameOfGateway) =>{
       return console.log(err);
 
     }
-    listOfBeacons = file.split("\n");
+    listOfBeacons = file.split("\r\n");
+    listOfBeacons.pop(); //remove the "" from last element
+    listOfBeacons.shift(); //remove the name of gateway from start
     res.send(listOfBeacons);
   });
 
