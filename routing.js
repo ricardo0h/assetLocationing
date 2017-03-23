@@ -26,6 +26,13 @@ router.get("/api/gateway",function(req, res, next) {
   //no need to send anything here
   gatewayQueries.getAllGateways(req,res,next);
 });
+router.get("/api/gateway/:ID",function(req, res, next) {
+  console.log('called api gateways:ID');
+  var ID = req.params.ID;
+  //the function then returns the values to view when callback happens
+  //no need to send anything here
+  gatewayQueries.getBeaconsFromGateway(req,res,next,ID);
+});
 
 
 

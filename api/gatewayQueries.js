@@ -8,7 +8,9 @@ exports.getAllGateways = (req,res,next) =>{
   var fs = require("fs");
   fs.readFile("./GatewayInformation/listOfGateways.txt", "utf8",function(err, data){
     if (err){
+      res.send(err);
       return console.log(err);
+
     }
     console.log(data);
   //!!!!!!!!!!!!HERE ROW IS SOMEHOW AGEIN R NOT N!!!!!!!!!!!
@@ -16,4 +18,20 @@ exports.getAllGateways = (req,res,next) =>{
     res.send(listOfGateways);
 
   });
+}
+
+exports.getBeaconsFromGateway = (req,res,next,nameOfGateway) =>{
+  console.log("called qateway queries");
+  var fs = require("fs");
+  fs.readFile("./GatewayInformation/" + nameOfGateway + ".txt", "utf8",function(err,file){
+    if (err){
+      res.send(err);
+      return console.log(err);
+
+    }
+    listOfBeacons = file.split("\n");
+    res.send(listOfBeacons);
+  });
+
+
 }
