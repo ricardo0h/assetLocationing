@@ -13,11 +13,14 @@
 
 <script>
 
+//this is done when page loads
 function loadGateways(){
 	$.get( "/api/gateway", function( data ) {
 		addDataToOptions(data);
+		listenForSelections();
 	});
 
+//this adds list of options to gateway selector thing
 	function addDataToOptions(data){
 		var x = document.getElementById("selectGateway");
 		for (item in data){
@@ -27,6 +30,29 @@ function loadGateways(){
 			x.add(option);
 		}
 	}
+//this only shows the loaded Gateway  beacon list
+	function showListOfBeacons(listOfBeacons){
+		var Div = document.getElementById("placeToShowTheBeaconsFromSpecificGateway").innerHTML = listOfBeacons;
+
+	}
+	//function adds eventlistener for gateway selector dropdown
+	//when value is changed fetches new data from API for selected gateway
+	//then calls function: showListOfBeacons which shows the data fetched
+	function listenForSelections(){
+		var gatewaySelector = document.getElementById("selectGateway");
+
+		gatewaySelector.addEventListener("change", function() {
+		    var value = gatewaySelector.options[gatewaySelector.selectedIndex].value;
+				//here we need to fetch new beaconList for that gateway
+				$.get( "/api/gateway/"+value, function( data ){
+					//alert(data);
+					showListOfBeacons(data);
+				});
+			});
+}
+
+
+
 };
 
 </script>
@@ -125,6 +151,10 @@ function loadGateways(){
 		<div class="col-md-6">
 			<h4>Beacons:</h4>
 			*shows beacons in currently selected Location*
+				<div id = "placeToShowTheBeaconsFromSpecificGateway">
+					<p>
+					</p>
+				</div>
 		</div>
 	</div>
 	<br>
