@@ -1,11 +1,10 @@
 //functions in this file read data from files in server memory and
 //send the read files to view.
 //these need to be called throught the routing
-
+var fs = require("fs");
 var fileWriter = require("../fileWriter");
 exports.getAllGateways = (req,res,next) =>{
   console.log("called qateway queries");
-  var fs = require("fs");
   fs.readFile("./GatewayInformation/listOfGateways.txt", "utf8",function(err, data){
     if (err){
       res.send(err);
@@ -23,7 +22,6 @@ exports.getAllGateways = (req,res,next) =>{
 
 exports.getBeaconsFromGateway = (req,res,next,nameOfGateway) =>{
   console.log("called qateway queries");
-  var fs = require("fs");
   fs.readFile("./GatewayInformation/" + nameOfGateway + ".txt", "utf8",function(err,file){
     if (err){
       res.send(err);

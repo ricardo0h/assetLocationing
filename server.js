@@ -35,11 +35,9 @@ io.on('connection', function(socket) {
 
       //here check if the sender is registered on the list of gateways
       //if not => do nothing
-      //if yes => write to gateway file using filewriter
+      //if yes => write to gateways own file using filewriter
       checkSenderAndWriteToFile(data.found_devices.split("\r\n")[0], data);
 
-      //write the data from gateway to gateways own file
-      //fileWriter.writeToFile(data.found_devices);
 
       console.log (data);
       //this propably sends to all sockets so it is not good on the long run
