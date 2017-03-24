@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const app = express()
 const port = 5000;
+const fs = require("fs");
 //filewriter is used to write and read gateway data to documents
 var fileWriter = require('./filewriter.js')
 //here we require the routing file and all its routes
@@ -32,12 +33,19 @@ io.on('connection', function(socket) {
     socket.on('message', function(data){
       //always when message comes
 
+      //here check if the sender is registered on the list of gateways
+      //if not => do nothing
+      //if yes => write to gateway file using filewriter
+      checkSenderAndWriteToFile(data.found_devices.split("\r\n")[0], data);
+
       //write the data from gateway to gateways own file
-      fileWriter.writeToFile(data.found_devices);
+      //fileWriter.writeToFile(data.found_devices);
 
       console.log (data);
       //this propably sends to all sockets so it is not good on the long run
       io.emit("messageToView", data);
+
+
     });
     socket.on('connectionStarted', console.log);
     //send to client:
@@ -49,3 +57,24 @@ io.on('connection', function(socket) {
 app.set('view engine', 'ejs');
 //use the routing file to set the urls
 app.use("/", routing);
+
+
+
+function checkSenderAndWriteToFile(name, data){
+  console.log("nimi: "+ name);
+  fs.readFile("./GatewayInformation/listOfGateways.txt", "utf8",function(err,gateways){
+    if (err){
+      return console.log(err);
+    }
+    gateways = gateways.split("\r\n")
+    for (gateway in gateways){
+      if (name == gateways[gateway]){
+        console.log(name +" "+ gateways[gateway] + " => The gateway is on the list")
+        fileWriter.writeToFile(data.found_devices);
+        return;
+      }
+    }
+    console.log("sender was not on the gateway list")
+  });
+
+}

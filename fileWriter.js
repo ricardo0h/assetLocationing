@@ -19,12 +19,13 @@ exports.writeToFile =(data) => {
 
   exports.getAllGateways = () =>{
       var fs = require("fs");
-      var file = fs.readFile("./GatewayInformation/listOfGateways.txt", "utf8",function(err){
+      fs.readFile("./GatewayInformation/listOfGateways.txt", "utf8",function(err,file){
         if (err){
           return console.log(err);
         }
+        return file;
       });
-      return file;
+
   }
 
 

@@ -1,3 +1,6 @@
 gateway1
-beacon123
-baconIsGood
+Xperia
+PLK-L01
+UUsiBEaconasd
+toinen uusi beacon
+lissa
